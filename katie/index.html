@@ -1,0 +1,827 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="robots" content="noindex, nofollow">
+<title>Second Brain Builder</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="../core/core.css">
+</head>
+<body>
+
+<!-- ============ GATE — client-side curtain, not a lock ============ -->
+<div id="gate">
+  <div class="dots"></div>
+  <div class="box">
+    <div class="eyebrow" style="color:var(--text-on-dark-faint);margin-bottom:16px">Private build</div>
+    <h1>Second Brain Builder</h1>
+    <p>Built for Katie. Enter the password Trevor gave you.</p>
+    <input id="pw" type="password" autocomplete="off" placeholder="password" aria-label="password">
+    <div class="err" id="gerr"></div>
+  </div>
+</div>
+
+<!-- ============ APP ============ -->
+<div id="app">
+  <nav id="rail">
+    <div class="brand">Second Brain<br>Builder</div>
+    <div class="brandsub">Katie · Technology Integration</div>
+    <ol id="railsteps"></ol>
+    <div class="foot">
+      Answers save in this browser.<br>
+      <button id="reset">Start over</button>
+    </div>
+  </nav>
+
+  <main id="main">
+    <div class="ground"></div>
+    <div class="wrap">
+
+      <!-- ---------- 0. WHAT THIS IS ---------- -->
+      <section class="step on" data-step="0">
+        <div class="tape olive">Read this first</div>
+        <h2 class="big">A brain that holds the <span class="hilite">thinking behind the programme.</span></h2>
+        <p class="lead">Not an app. A folder of plain text files on your work Mac, plus an assistant that reads them, writes to them, and asks you the questions you'd otherwise not get around to asking yourself.</p>
+
+        <div class="body">
+          <div class="teach">
+            <span class="eyebrow">Why you're getting one</span>
+            <p>The technology and innovation programme is yours to grow, and most of what shapes it currently lives in three places: the shared notebook, a Google Doc somewhere, and a conversation with me. The first is solid. The second is scattered. <strong>The third does not scale, and it makes your programme depend on my availability.</strong></p>
+            <p>This is the fix. Your brain arrives already knowing ELC's position on technology, the plan we've adopted, the standards we've committed to, and the decision rules I use when the plan doesn't settle a question. From there it's yours — you add what you find valuable, and it grows on your thinking, not mine.</p>
+          </div>
+
+          <p class="note">I've run this system since May 2026. The parts that survived are the boring ones — one file I read every session, one loop I run every week, one place decisions get written down. Everything clever I built got deleted. This page gives you the surviving parts.</p>
+
+          <div class="teach">
+            <span class="eyebrow">What it is not</span>
+            <p>It is <strong>not a replacement for the shared notebook.</strong> That stays the curriculum record you and Goldie own together — what gets decided lives there. This is your working surface: where thinking happens before it's decided, and where your own two jobs get held apart. There's a whole chapter on the join later, because getting it wrong is the one way this causes a problem.</p>
+            <p>It is also <strong>not a place for anything confidential.</strong> Chapter 5 is that rule in full, and it is not optional.</p>
+          </div>
+
+          <div class="teach dark">
+            <span class="eyebrow">What this actually costs you</span>
+            <p>About an hour to build, with me sitting next to you. Then roughly five minutes a day and twenty minutes once a week. If after four weeks it isn't earning that, we stop — that's a real option, not a polite one.</p>
+          </div>
+        </div>
+        <div class="nav"><div class="spacer"></div><span class="stepcount"></span><button class="btn" data-go="1">Start →</button></div>
+      </section>
+
+      <!-- ---------- 1. TOOLS ---------- -->
+      <section class="step" data-step="1">
+        <div class="tape">Step one</div>
+        <h2 class="big">Get the tools on your work Mac.</h2>
+        <p class="lead">Three things, in this order. If any step doesn't look like what's described here, stop and ask me rather than improvising — a wrong turn early is annoying to unpick later.</p>
+
+        <div class="body">
+          <ol class="steps-list">
+            <li>
+              <h4>Sign in to Claude on your ELC account</h4>
+              <p>Claude Pro, on <code>@elc.ac.th</code> — not a personal account. The vault this builds is a work resource and it should sit behind a work login.</p>
+            </li>
+            <li>
+              <h4>Install Claude Code</h4>
+              <p>Open <strong>Terminal</strong> (Command-Space, type "terminal", Enter). A window of plain text appears — that's normal, and you'll only ever type a handful of things into it. Paste this and press Enter:</p>
+              <pre class="cmd">curl -fsSL https://claude.ai/install.sh | bash</pre>
+              <p>Then type <code>claude</code> and press Enter. It will ask you to sign in — use the ELC account from step one.</p>
+            </li>
+            <li>
+              <h4>Make the folder, inside Google Drive</h4>
+              <p>In Finder, open your <strong>Google Drive</strong> folder and make a new folder there. That's the whole backup plan: everything the brain writes syncs to Drive automatically, so there is no separate thing to remember.</p>
+              <div class="decide" style="margin:12px 0 0">
+                <div class="q"><span class="num">Q1</span>What should the folder be called?</div>
+                <p class="help">Lowercase, no spaces. You'll type it occasionally, so keep it short.</p>
+                <input type="text" class="mono" data-k="vault" placeholder="brain" maxlength="24">
+              </div>
+            </li>
+            <li>
+              <h4>Point Terminal at it</h4>
+              <p>Back in Terminal, type <code>cd</code> and a space — then <strong>drag the folder from Finder onto the Terminal window</strong> and press Enter. That saves you typing the path. Then:</p>
+              <pre class="cmd">claude</pre>
+              <p>You're in. Everything from here happens by talking to it in normal sentences.</p>
+            </li>
+          </ol>
+
+          <p class="note">You will not break anything. Every file it makes is plain text, every version is saved, and nothing it does is hidden from you — you can open any of it in Finder and read it like a note.</p>
+        </div>
+        <div class="nav"><button class="btn ghost" data-go="0">← Back</button><div class="spacer"></div><span class="stepcount"></span><button class="btn" data-go="2">Next →</button></div>
+      </section>
+
+      <!-- ---------- 2. THE SHAPE ---------- -->
+      <section class="step" data-step="2">
+        <div class="tape">Step two</div>
+        <h2 class="big">The shape of it.</h2>
+        <p class="lead">Four ideas. Everything else in this build is one of these four applied somewhere.</p>
+
+        <div class="body">
+          <div class="teach">
+            <span class="eyebrow">One file it reads every single session</span>
+            <p><code>hot.md</code> — what's live right now. Newest at the top, one block per session. It's the first thing the assistant reads, every time, so you never start a conversation by re-explaining where things are.</p>
+            <p>When it gets long, the closed weeks move into <code>recaps/</code>. <strong>Stale is worse than empty</strong> — a page that's quietly six weeks out of date will confidently tell you the wrong thing.</p>
+          </div>
+
+          <div class="teach">
+            <span class="eyebrow">One fact, one place</span>
+            <p>Every fact lives in exactly one file, and everything else points at it. The moment a number or a date exists in two places, one of them is wrong and you won't know which.</p>
+            <p>This is why the brain <strong>points at the shared notebook rather than copying from it.</strong> Curriculum truth lives there. Your brain holds the thinking and links to the record.</p>
+          </div>
+
+          <div class="teach">
+            <span class="eyebrow">Written for a machine to retrieve, not a human to admire</span>
+            <p>No dashboards, no pretty tables you maintain by hand, no page that exists so somebody can be impressed by it. Dense, current, factual. If nothing would break by deleting a file, delete it.</p>
+          </div>
+
+          <div class="teach dark">
+            <span class="eyebrow">It asks, you decide</span>
+            <p>The assistant never writes to a file without proposing it first and waiting for your yes. One question at a time — never a list. That rule is what makes it safe to let it touch your work at all.</p>
+          </div>
+        </div>
+        <div class="nav"><button class="btn ghost" data-go="1">← Back</button><div class="spacer"></div><span class="stepcount"></span><button class="btn" data-go="3">Next →</button></div>
+      </section>
+
+      <!-- ---------- 3. ONE WORD ---------- -->
+      <section class="step" data-step="3">
+        <div class="tape">Step three</div>
+        <h2 class="big">One word for the next hundred days.</h2>
+        <p class="lead">Every routine checks itself against this word. It's the difference between a brain that files things and a brain that tells you when you're drifting.</p>
+
+        <div class="body">
+          <div class="teach">
+            <span class="eyebrow">Why one word</span>
+            <p>A list of priorities can't referee a decision — everything on it is a priority. One word can. When the week has too much in it, the word is what decides which thing gets dropped, and it makes that call the same way twice.</p>
+          </div>
+
+          <div class="decide">
+            <div class="q"><span class="num">Q2</span>Which one?</div>
+            <p class="help">These are drawn from what the programme actually needs this year. Pick one, or write your own.</p>
+            <div class="cards two" data-radio="star">
+              <label class="opt"><input type="radio" name="star" value="Progression"><span class="box round"></span><span><span class="lbl">Progression <span class="rec">Suggested</span></span><span class="sub">The thing the programme most visibly lacks: a stated theory of what develops across the years.</span></span></label>
+              <label class="opt"><input type="radio" name="star" value="Evidence"><span class="box round"></span><span><span class="lbl">Evidence</span><span class="sub">Nothing changes without something real to justify it. Capture as you go.</span></span></label>
+              <label class="opt"><input type="radio" name="star" value="Sequence"><span class="box round"></span><span><span class="lbl">Sequence</span><span class="sub">Order before content. What comes before what, and why that order.</span></span></label>
+              <label class="opt"><input type="radio" name="star" value="__custom"><span class="box round"></span><span><span class="lbl">My own word</span><span class="sub">Write it below.</span></span></label>
+            </div>
+            <div data-showif="star=__custom" style="margin-top:12px">
+              <input type="text" data-k="starCustom" placeholder="Your word">
+            </div>
+          </div>
+
+          <div class="decide">
+            <div class="q"><span class="num">Q3</span>Say what it means, in one sentence.</div>
+            <p class="help">This goes in the rules file and gets read back to you when something's slipping. Write it as a test you could fail, not a value you hold.</p>
+            <textarea data-k="starLine" placeholder="e.g. No year band gets planned without saying what it builds on and what it feeds."></textarea>
+          </div>
+        </div>
+        <div class="nav"><button class="btn ghost" data-go="2">← Back</button><div class="spacer"></div><span class="stepcount"></span><button class="btn" data-go="4">Next →</button></div>
+      </section>
+
+      <!-- ---------- 4. THE LOOP ---------- -->
+      <section class="step" data-step="4">
+        <div class="tape">Step four</div>
+        <h2 class="big">The loop that makes it a brain.</h2>
+        <p class="lead">Four routines. You type a slash command, it does the rest. This is the whole system — everything else is furniture.</p>
+
+        <div class="body">
+          <div class="teach">
+            <span class="eyebrow">/start — the morning brief</span>
+            <p>Reads the hot file, sweeps anything you threw in overnight, and gives you a short brief: what's live, what's at risk, what's gone quiet. Read it standing up.</p>
+          </div>
+
+          <div class="teach">
+            <span class="eyebrow">/close — the grill</span>
+            <p>The one that does the real work. It doesn't ask "how was your day" and file the answer — it <strong>interrogates</strong> you against what's already written down. <em>"You planned three Y5 sessions around the Arduino sequence and the map still says that band is unknown. Which is true?"</em></p>
+            <p>One question at a time, maximum eight, and it writes each answer into the record as it lands. This is where a folder of notes becomes something that knows things.</p>
+          </div>
+
+          <div class="teach">
+            <span class="eyebrow">/save — after anything that mattered</span>
+            <p>A conversation with Goldie, a decision in a meeting, a thread you don't want to lose. It reads back through what you told it and files the decisions, commitments and new names in the right places.</p>
+          </div>
+
+          <div class="teach dark">
+            <span class="eyebrow">/week-close and /week-plan</span>
+            <p>The week grill asks the honest question: <em>which part of this got no attention at all, and was that a choice or a drift?</em> The plan sets a thesis for the week — one sentence on what the week is actually for — and then walks everything outstanding, one at a time.</p>
+          </div>
+
+          <div class="decide">
+            <div class="q"><span class="num">Q4</span>How often should the grill run?</div>
+            <p class="help">Your day is classroom-shaped, not meeting-shaped, so a nightly interrogation may be more than the day can feed. Be honest about which of these you'd actually do.</p>
+            <div class="cards" data-radio="close">
+              <label class="opt"><input type="radio" name="close" value="weekly"><span class="box round"></span><span><span class="lbl">Weekly only <span class="rec">Suggested</span></span><span class="sub">One proper grill at the end of the week. Days get a two-line note when something happens, and that's it.</span></span></label>
+              <label class="opt"><input type="radio" name="close" value="daily"><span class="box round"></span><span><span class="lbl">Daily</span><span class="sub">Every teaching day. Sharper record, but it needs five minutes you may not have at 4pm.</span></span></label>
+              <label class="opt"><input type="radio" name="close" value="both"><span class="box round"></span><span><span class="lbl">Both, with a quick version</span><span class="sub">A short daily note, plus the full grill weekly. More commands to remember.</span></span></label>
+            </div>
+          </div>
+
+          <div class="decide">
+            <div class="q"><span class="num">Q5</span>Which day closes the week?</div>
+            <p class="help">The week grill and the week plan can be the same sitting or split across the weekend.</p>
+            <div class="cards two" data-radio="weekday">
+              <label class="opt"><input type="radio" name="weekday" value="Friday"><span class="box round"></span><span><span class="lbl">Friday — both <span class="rec">Suggested</span></span><span class="sub">Close and plan in one sitting while the week is fresh. Nothing hangs over the weekend.</span></span></label>
+              <label class="opt"><input type="radio" name="weekday" value="Friday+Sunday"><span class="box round"></span><span><span class="lbl">Close Friday, plan Sunday</span><span class="sub">A night between looking back and deciding forward.</span></span></label>
+            </div>
+          </div>
+
+          <div class="decide">
+            <div class="q"><span class="num">Q6</span>Anything else worth having on day one?</div>
+            <p class="help">All cheap. Anything skipped can be added later by asking Claude for it in plain words.</p>
+            <div class="cards" data-check="addons">
+              <label class="opt"><input type="checkbox" value="capture"><span class="box"></span><span><span class="lbl">Capture inbox <span class="rec">Suggested</span></span><span class="sub">An <code>_inbox</code> folder to throw things into unfiled — a thought, a link, a photo of a whiteboard. Every routine sweeps it and asks where each thing belongs.</span></span></label>
+              <label class="opt"><input type="checkbox" value="decisions"><span class="box"></span><span><span class="lbl">Decision log <span class="rec">Suggested</span></span><span class="sub">One dated file per real decision — what was decided, why, <strong>and what you rejected</strong>. The last part is the one you go back for.</span></span></label>
+              <label class="opt"><input type="checkbox" value="prep"><span class="box"></span><span><span class="lbl">Meeting prep <span class="rec">Suggested</span></span><span class="sub"><code>/prep</code> before a conversation: who they are, what was last said, what's owed in each direction, and the three things you need out of it.</span></span></label>
+              <label class="opt"><input type="checkbox" value="observation"><span class="box"></span><span><span class="lbl">Classroom observation capture</span><span class="sub"><code>/observed</code> — a fast way to log what actually happened with children and materials, in the moment, before the detail goes.</span></span></label>
+            </div>
+          </div>
+        </div>
+        <div class="nav"><button class="btn ghost" data-go="3">← Back</button><div class="spacer"></div><span class="stepcount"></span><button class="btn" data-go="5">Next →</button></div>
+      </section>
+
+      <!-- ---------- 5. WHERE IT STOPS ---------- -->
+      <section class="step" data-step="5">
+        <div class="tape">Step five</div>
+        <h2 class="big">Where the brain stops.</h2>
+        <p class="lead">This chapter has no questions in it. These rules go into your build whatever you choose elsewhere, because they're what makes a brain on a school machine a reasonable thing to have.</p>
+
+        <div class="body">
+          <div class="teach dark">
+            <span class="eyebrow">Never goes in — no exceptions</span>
+            <ul>
+              <li><strong>Anything safeguarding.</strong> Not a summary, not a note-to-self, not an initial. It has its own route and this is not it.</li>
+              <li><strong>Anything HR.</strong> Pay, contracts, performance, anything about a colleague you wouldn't say to their face in a meeting.</li>
+              <li><strong>Named children with anything attached.</strong> A child's name plus a difficulty, a diagnosis, a family circumstance — that belongs in the school's systems, not in a folder on your Mac.</li>
+              <li><strong>Anything a parent shared in confidence.</strong></li>
+            </ul>
+            <p>The test is simple: <em>would you be comfortable if this file were read out?</em> If you hesitate, it doesn't go in.</p>
+          </div>
+
+          <div class="teach">
+            <span class="eyebrow">The pointer rule — how to keep the useful part</span>
+            <p>You often need to <em>remember that something exists</em> without recording what it says. So the brain holds the pointer and the shape, never the contents.</p>
+            <p>Write <em>"assistive tech route for one Y2 child — notes in the SSW system, review with the coordinator in October"</em>. Not the child, not the condition, not the detail. You keep the thread; the sensitive part stays where it belongs. Your build will have this rule written into its own rules file, and the assistant will push back if you drift over the line.</p>
+          </div>
+
+          <div class="teach">
+            <span class="eyebrow">Anonymous is fine, and it's most of what you need</span>
+            <p><em>"Three children in the group couldn't get the crocodile clips to hold, so the build stalled before the idea did"</em> is a real, useful observation with nobody identified in it. Almost all pedagogical evidence works like this. Write the pattern, not the person.</p>
+          </div>
+
+          <div class="teach">
+            <span class="eyebrow">Where the vault lives, and who can see it</span>
+            <p>Your ELC Google Drive, on your work account. Not a personal Drive, not iCloud, not Dropbox. It's a work resource on a work machine backed up to a work account — which is what makes it defensible if anyone ever asks, and IT reviews the whole setup before you start.</p>
+          </div>
+        </div>
+        <div class="nav"><button class="btn ghost" data-go="4">← Back</button><div class="spacer"></div><span class="stepcount"></span><button class="btn" data-go="6">Next →</button></div>
+      </section>
+
+      <!-- ---------- 6. TWO HATS ---------- -->
+      <section class="step" data-step="6">
+        <div class="tape olive">Built for your job</div>
+        <h2 class="big">You wear two hats. The brain should <span class="hilite">know which one you're in.</span></h2>
+        <p class="lead">You teach K1, and you lead technology integration across the school. Those are two different jobs with two different rhythms, and most of the mess of holding both comes from them being tangled in the same notebook.</p>
+
+        <div class="body">
+          <div class="teach">
+            <span class="eyebrow">Why split them</span>
+            <p>The teaching lane runs daily, is full of specifics, and mostly matters this week. The lead lane runs in months, is full of architecture, and mostly matters next year. Filed together, the second gets buried by the volume of the first — <strong>which is exactly how a leadership brief quietly turns into an admin log.</strong></p>
+            <p>Split, each lane can be asked its own question. <em>"What's live in K1 this week?"</em> and <em>"What has moved on progression since June?"</em> stop competing for the same shelf.</p>
+          </div>
+
+          <div class="decide">
+            <div class="q"><span class="num">Q7</span>Your lanes.</div>
+            <p class="help">Two are seeded. Add any others you genuinely hold — click one to switch it off, × to remove.</p>
+            <div class="chips" data-chips="lanes"></div>
+            <div class="addrow"><input type="text" data-chip-add="lanes" placeholder="Add a lane…"><button class="btn ghost" data-chip-btn="lanes">Add</button></div>
+          </div>
+
+          <div class="decide">
+            <div class="q"><span class="num">Q8</span>When you capture something, how should it decide which lane it belongs in?</div>
+            <p class="help">Some things are obviously one or the other. Some — an observation in your own classroom that says something about progression — are genuinely both.</p>
+            <div class="cards" data-radio="route">
+              <label class="opt"><input type="radio" name="route" value="propose"><span class="box round"></span><span><span class="lbl">Propose, then ask <span class="rec">Suggested</span></span><span class="sub">It tells you where it thinks something goes and why, and waits for your yes. You correct it maybe twice a week and it gets better at your judgement.</span></span></label>
+              <label class="opt"><input type="radio" name="route" value="ask"><span class="box round"></span><span><span class="lbl">Always ask, never guess</span><span class="sub">Safest, slightly more typing. Good if the two lanes overlap more than they look like they do.</span></span></label>
+              <label class="opt"><input type="radio" name="route" value="both"><span class="box round"></span><span><span class="lbl">File in both when it's genuinely both</span><span class="sub">One record, referenced from both lanes — never two copies. Ask for this when an observation carries real weight for the architecture.</span></span></label>
+            </div>
+          </div>
+
+          <div class="teach dark">
+            <span class="eyebrow">One thing your brain will deliberately not decide for you</span>
+            <p>There are two live answers to how you and Goldie divide the work — the Technology Plan splits you by <strong>year band</strong>, the brain charter splits you by <strong>function</strong>. Both are written down and neither has been chosen.</p>
+            <p><strong>Your build will hold both and take neither.</strong> That call is yours and Goldie's to make together, and a tool that quietly settled it while you weren't looking would be doing something it has no business doing.</p>
+          </div>
+        </div>
+        <div class="nav"><button class="btn ghost" data-go="5">← Back</button><div class="spacer"></div><span class="stepcount"></span><button class="btn" data-go="7">Next →</button></div>
+      </section>
+
+      <!-- ---------- 7. SOURCES ---------- -->
+      <section class="step" data-step="7">
+        <div class="tape olive">Built for your job</div>
+        <h2 class="big">What it knows before you type anything.</h2>
+        <p class="lead">Your brain doesn't start empty. It starts with the corpus behind the programme — ELC's stated position, the plan, the standards, the sequence we're borrowing from, and the decision rules I use when none of those settle a question.</p>
+
+        <div class="body">
+          <div class="teach">
+            <span class="eyebrow">How this works</span>
+            <p>These live as Google Docs in ELC Drive. Your build's first job is to read them and write itself a short distilled note on each — <strong>not copy them.</strong> They stay where they are, owned by the school, and your brain points at them. When one gets updated, it's still the source of truth and your brain re-reads it.</p>
+            <p>Open any of them now if you want to see what you're inheriting.</p>
+          </div>
+
+          <div class="decide">
+            <div class="q"><span class="num">Q9</span>Which of these go in on day one?</div>
+            <p class="help">All ticked by default. Untick anything you'd rather come to later — nothing here is load-bearing for the build itself.</p>
+            <div class="cards" data-check="sources" id="seedmount"></div>
+          </div>
+
+          <div class="teach">
+            <span class="eyebrow">Now the part that makes it yours</span>
+            <p>The corpus above is <em>my</em> read of the programme. A brain built only on it would be a very good copy of my thinking, which is not what either of us wants.</p>
+            <p>So: <strong>add what you find valuable, and say why.</strong> The why matters more than the what — a source with a line explaining what you expect to get from it gets used properly. A source dropped in with no note gets cited at random.</p>
+          </div>
+
+          <div class="decide">
+            <div class="q"><span class="num">Q10</span>Your own sources.</div>
+            <p class="help">Anything: a book you teach from, a framework you trust, a Drive doc, a site, a colleague's planning you learn from. Name it, then say in one line what you want it for.</p>
+            <div class="chips" data-chips="mine"></div>
+            <div class="addrow" style="flex-direction:column;gap:9px">
+              <input type="text" data-chip-add="mine" placeholder="Source — e.g. Development Matters, or a Drive doc">
+              <div class="addrow">
+                <input type="text" data-chip-why="mine" placeholder="What you want from it — e.g. the early-years progression Ontario doesn't cover">
+                <button class="btn ghost" data-chip-btn="mine">Add</button>
+              </div>
+            </div>
+          </div>
+
+          <p class="note">Don't try to fill this now. Two or three you already know you want is plenty — the rest arrive when a real question makes you go looking, and that's the right way round.</p>
+        </div>
+        <div class="nav"><button class="btn ghost" data-go="6">← Back</button><div class="spacer"></div><span class="stepcount"></span><button class="btn" data-go="8">Next →</button></div>
+      </section>
+
+      <!-- ---------- 8. STAGING → PUBLISH ---------- -->
+      <section class="step" data-step="8">
+        <div class="tape olive">Built for your job</div>
+        <h2 class="big">Drafts here. <span class="hilite">Decided there.</span></h2>
+        <p class="lead">This is the one rule that keeps your brain and the shared notebook from turning into two competing versions of the truth. It's short, and it's worth reading twice.</p>
+
+        <div class="body">
+          <div class="teach dark">
+            <span class="eyebrow">The rule</span>
+            <p><strong>Your technology lane is where thinking happens. The shared notebook is where things get decided.</strong> Nothing is settled because it's written in your brain — it's settled when it's published into the shared record where Goldie can see it, argue with it, and build on it.</p>
+          </div>
+
+          <div class="teach">
+            <span class="eyebrow">What goes wrong without it</span>
+            <p>Quietly and over about six weeks: the good thinking accumulates in the fast private tool, the shared notebook stops being where the answers are, and Goldie is working from a record that's no longer true. Nobody decides this. It just happens, because the private tool is more convenient.</p>
+            <p>So the brain runs the publish step <em>for</em> you — it tracks what's been staged, and at the cadence you set below it shows you the list and asks what's ready.</p>
+          </div>
+
+          <div class="decide">
+            <div class="q"><span class="num">Q11</span>How often should it push you to publish?</div>
+            <p class="help">This is the moment where private thinking becomes shared record. Too rare and the notebook goes stale; too often and you're publishing half-formed things.</p>
+            <div class="cards" data-radio="publish">
+              <label class="opt"><input type="radio" name="publish" value="monthly"><span class="box round"></span><span><span class="lbl">Monthly <span class="rec">Suggested</span></span><span class="sub">Matches the sprint rhythm the shared brain already runs on. Long enough that what you publish has settled.</span></span></label>
+              <label class="opt"><input type="radio" name="publish" value="fortnightly"><span class="box round"></span><span><span class="lbl">Fortnightly</span><span class="sub">Tighter. Better while the two of you are actively building something together.</span></span></label>
+              <label class="opt"><input type="radio" name="publish" value="ondemand"><span class="box round"></span><span><span class="lbl">When something's ready</span><span class="sub">No cadence — it prompts when a staged item has stopped changing. Relies on you noticing.</span></span></label>
+            </div>
+          </div>
+
+          <div class="teach">
+            <span class="eyebrow">The other direction, said plainly</span>
+            <p>If this system turns out to be a better place for the two of you to work than the shared notebook, <strong>that's an allowed outcome</strong> — but it's a decision you and Goldie make and write down, not something that's allowed to happen by drift. Your brain will flag it if it notices the shared record going quiet while yours fills up.</p>
+          </div>
+        </div>
+        <div class="nav"><button class="btn ghost" data-go="7">← Back</button><div class="spacer"></div><span class="stepcount"></span><button class="btn" data-go="9">See my blueprint →</button></div>
+      </section>
+
+      <!-- ---------- 9. BLUEPRINT ---------- -->
+      <section class="step" data-step="9">
+        <div class="tape olive">Last step</div>
+        <h2 class="big">Your blueprint.</h2>
+        <p class="lead">Everything you chose, written as one instruction file. You hand it to Claude Code and it builds the whole thing while you watch.</p>
+
+        <div class="body">
+          <div class="summary" id="summary"></div>
+
+          <div id="bp">
+            <div class="bar"><span class="dot"></span><span class="dot"></span><span class="dot"></span><span class="name">BLUEPRINT.md</span><span class="len" id="bplen"></span></div>
+            <pre id="bptext"></pre>
+          </div>
+          <div class="dl">
+            <button class="btn spark" id="dlbtn">Download BLUEPRINT.md</button>
+            <button class="btn ghost" id="cpbtn">Copy it instead</button>
+            <span class="ok" id="dlok"></span>
+          </div>
+
+          <div class="rule"></div>
+
+          <ol class="steps-list">
+            <li>
+              <h4>Put it in the folder</h4>
+              <p>Drag <code>BLUEPRINT.md</code> from Downloads into your brain folder in Google Drive.</p>
+            </li>
+            <li>
+              <h4>Open Claude Code there</h4>
+              <pre class="cmd" id="cdcmd"></pre>
+            </li>
+            <li>
+              <h4>Say this</h4>
+              <pre class="cmd">Read BLUEPRINT.md and build my second brain exactly as it describes.
+Show me what you made when you're done.</pre>
+              <p>It works for a few minutes, making files and explaining as it goes. Watch it — that's the lesson. When it asks you something, answer in normal words.</p>
+            </li>
+            <li>
+              <h4>Run your first morning</h4>
+              <pre class="cmd">/start</pre>
+              <p>Day one it'll be thin, because it only knows what it just read. Run your first close and it's already sharper.</p>
+            </li>
+          </ol>
+
+          <p class="note">Give it four weeks. The first few days feel like typing into a void — that's the brain filling up. Then it starts telling you things you'd genuinely stopped tracking, and that's when it earns the hour.</p>
+
+          <div class="teach dark">
+            <span class="eyebrow">If you get stuck</span>
+            <p>Ask Claude Code itself first — <em>"I don't understand what just happened, explain it to me like I've never used this before"</em> works better than you'd expect. It knows what it just did to your files.</p>
+            <p>Then come and find me. Nothing here can break in a way we can't fix: every file is plain text, and everything is backed up to Drive as it's written.</p>
+          </div>
+        </div>
+        <div class="nav"><button class="btn ghost" data-go="8">← Back to questions</button><div class="spacer"></div><span class="stepcount"></span></div>
+      </section>
+
+    </div>
+  </main>
+</div>
+
+<script>
+/* ============================================================
+   SEAT — Katie · K1 Educator & Technology Integration Lead
+   ============================================================ */
+
+/* Seed corpus. Docs live in ELC Drive; the brain reads and distils, never copies.
+   Links are access-controlled by Drive — a URL here grants nobody anything. */
+const SEED = [
+  { id:'01', t:'Charter — what the shared brain is for',        url:'https://docs.google.com/document/d/1OiP45mAqV1DavYwKkA_WDockE0_fLKhpiJ9LOHQNRrg/edit',
+    why:'The mission, the low-tech decision rule, and who has final say on what. Start here.' },
+  { id:'11', t:"ELC's position on technology with children",     url:'https://docs.google.com/document/d/1ekKo_HCbwTwZlcs1EznaTPwHYvxVbQwy_wlMpuVfipE/edit',
+    why:'What we told parents in May, over my name, after the Director reviewed it. Technology assists, it does not drive. This is the position you design against.' },
+  { id:'13', t:'The Technology Plan and our standards',          url:'https://docs.google.com/document/d/1Zl8OGyRHiB7_kJzj1VzirMqA9wO9CWi0jZYhhS_AX68/edit',
+    why:'ELC has already adopted ISTE, and the plan already names your seat. It also holds the year-band role split — one of the two live answers.' },
+  { id:'14', t:'Ontario Science and Technology, Grades 1–8',     url:'https://docs.google.com/document/d/1LU7iFxEUvoA6gG5VToRvIjBtWfq0nvNrTichJ_vPg7Y/edit',
+    why:'A published, ratified sequence — the answer to "what develops, and why this order?" that ISTE never gives. The single most useful document for your seat.' },
+  { id:'10', t:'ELC essentials — the school in its own words',   url:'https://docs.google.com/document/d/1nfoXkQniDP4aMqwoDZgAjxXzLc17GGH86r84c948ra8/edit',
+    why:'The guiding statements and the spine model, from the current Priorities rather than the older draft.' },
+  { id:'12', t:'Research anchors',                               url:'https://docs.google.com/document/d/1IYmUncSMFdY_jrRcwVwLU70QBf31q8ZbqmQG7425Dgo/edit',
+    why:'Fourteen anchors with what each one actually claims — plus a misattribution list, so we stop crediting Papert for things he did not say.' },
+  { id:'15', t:'The ELC atelier lineage',                        url:'https://docs.google.com/document/d/1fX6f-7ZCH5WEaPCPyXqEjWcJFtXYQRanNph2HccweQc/edit',
+    why:'Why a technology strand belongs in a Reggio-inspired school — the chain runs back to La Villetta, and ELC already staffs a technology atelierista. Read this one properly.' },
+  { id:'17', t:'How these calls get made',                       url:'https://docs.google.com/document/d/1jAP5g3VntxxfMx23jxw4VmukeNYkDwx1Hef0yzZEyv8/edit',
+    why:'Five decision rules I use when the plan does not settle a question. Written so you can make the call without me in the room.' }
+];
+
+/* render the seed as checkbox cards — one source of truth, no duplicated markup */
+document.getElementById('seedmount').innerHTML = SEED.map(s => `
+  <label class="opt"><input type="checkbox" value="${s.id}"><span class="box"></span><span>
+    <span class="lbl">${s.t}</span>
+    <span class="sub">${s.why} <a href="${s.url}" target="_blank" rel="noopener">Open →</a></span>
+  </span></label>`).join('');
+
+window.SEAT = {
+  key: 'sbb_katie',
+  password: 'tech@elc2026!',      // a curtain, not a lock — visible in source by design
+  name: 'Katie',
+  titles: ["What this is","Set up your Mac","The shape","Your one word","The loop","Where it stops","Your two hats","Your sources","Drafts & decisions","Your blueprint"],
+
+  blank: {
+    vault: "", name: "Katie",
+    star: "Progression", starCustom: "", starLine: "",
+    close: "weekly", weekday: "Friday",
+    addons: ["capture", "decisions", "prep"],
+    lanes: [
+      { t: "K1 teaching", on: true, id: "k1" },
+      { t: "Technology integration (K1–Y6)", on: true, id: "tech" }
+    ],
+    route: "propose",
+    sources: SEED.map(s => s.id),
+    mine: [],
+    publish: "monthly"
+  },
+
+  blueprint(P, S, H) {
+    const v = H.V(), n = H.NAME(), star = H.STAR();
+    const lanes = H.on('lanes');
+    const techLane = (S.lanes.find(l => l.id === 'tech' && l.on) || {}).t || lanes[0] || "Technology integration";
+    const chosen = SEED.filter(s => S.sources.includes(s.id));
+    const mine = (S.mine || []).filter(m => m.on);
+    const daily = S.close === 'daily' || S.close === 'both';
+    const wkClose = S.weekday === 'Friday' ? 'Friday' : 'Friday';
+    const wkPlan = S.weekday === 'Friday' ? 'Friday' : 'Sunday';
+    const cap = H.has('addons', 'capture'), dec = H.has('addons', 'decisions');
+
+    P(`# Build my second brain`);
+    P(``);
+    P(`You are setting up my second brain in this folder. Read this whole file before you start, then build everything it describes.`);
+    P(``);
+    P(`I am new to Claude Code. Explain what you are doing in plain language as you go, and when a choice is genuinely mine to make, ask me — one question at a time, never a list.`);
+    P(``);
+    P(`---`);
+    P(``);
+    P(`## Who this is for`);
+    P(``);
+    P(`- **Name:** ${n}`);
+    P(`- **Role:** K1 Educator and Technology Integration Lead at ELC International Schools, Bangkok.`);
+    P(`- **My one word for this period:** ${star}`);
+    if (H.STARLINE()) P(`- **What that means:** ${H.STARLINE()}`);
+    P(``);
+    P(`I hold two jobs at once: I teach K1, and I lead technology integration across K1–Y6. The technology curriculum is mine to grow. Trevor coaches and holds the pedagogical standard; **he does not drive this work and I do not wait on him.**`);
+    P(``);
+    P(`---`);
+    P(``);
+    P(`## 1. Folder skeleton`);
+    P(``);
+    P(`Create these folders and files. Do not create anything not listed here — extra structure is what kills systems like this.`);
+    P(``);
+    P('```');
+    P(`${v}/`);
+    P(`  CLAUDE.md              <- the rules, read at the start of every session`);
+    P(`  hot.md                 <- what is live right now, read second, every session`);
+    P(`  people.md              <- everyone the brain should know`);
+    lanes.forEach(l => {
+      const d = H.slug(l) + "/";
+      P(`  ${d}${" ".repeat(Math.max(1, 23 - d.length))}<- ${l}`);
+    });
+    P(`  ${H.slug(techLane)}/staging/  <- thinking not yet published to the shared notebook`);
+    P(`  sources/               <- one short distilled note per source, never a copy`);
+    if (cap) P(`  _inbox/                <- throw anything in here, unfiled`);
+    P(`  recaps/`);
+    if (dec) P(`  decisions/             <- one file per real decision`);
+    P(`  templates/`);
+    P(`  .claude/`);
+    P(`    skills/grill-engine.md`);
+    P(`    commands/            <- one file per routine`);
+    P('```');
+    P(``);
+    P(`Each lane folder gets one page inside it named after the folder, with these sections and nothing else:`);
+    P(``);
+    P(`\`## What this is\` · \`## Who owns what\` · \`## Current state\` · \`## Open threads\` · \`## Decisions\``);
+    P(``);
+    P(`Fill in what you can infer from this blueprint; leave the rest as short honest placeholders like \`_not yet captured_\`. **Never invent facts about my work, and never invent coherence** — where something is missing, write \`gap\` if we know it should be there and \`unknown\` if nobody has looked yet.`);
+    P(``);
+    P(`---`);
+    P(``);
+    P(`## 2. CLAUDE.md — write this file exactly`);
+    P(``);
+    P('```markdown');
+    P(`# ${n}'s brain`);
+    P(``);
+    P(`## First action every session`);
+    P(`Read \`hot.md\` before doing anything else. It carries everything from the last session.`);
+    P(``);
+    P(`## Who I am`);
+    P(`${n} — K1 Educator and Technology Integration Lead, ELC International Schools Bangkok.`);
+    P(`Two jobs, deliberately held apart: **teaching K1**, and **leading technology integration K1–Y6**.`);
+    P(`Trevor coaches and holds the standard. He does not drive this work. Never park a decision on the grounds that he has not weighed in.`);
+    P(``);
+    P(`## My one word: ${star}`);
+    if (H.STARLINE()) P(`${H.STARLINE()}`);
+    P(``);
+    P(`Check every routine against it. If the week's work does not serve it, say so plainly.`);
+    P(``);
+    H.BP.hardRules(P);
+    P(`7. **Never invent coherence.** An honest \`gap\` is worth more than a plausible-sounding plan. If the record does not say something, write that it does not.`);
+    P(``);
+    P(`## HARD — what never goes in these files`);
+    P(`These are not preferences. They are the condition of this brain existing on a school machine.`);
+    P(``);
+    P(`- **Nothing safeguarding.** Not a summary, not a note-to-self, not an initial.`);
+    P(`- **Nothing HR.** Pay, contracts, performance, anything about a colleague I would not say to their face.`);
+    P(`- **No named child with anything attached** — no name plus a difficulty, diagnosis or family circumstance. That lives in the school's systems.`);
+    P(`- **Nothing a parent shared in confidence.**`);
+    P(``);
+    P(`**The pointer rule.** Where I need to remember that something exists, hold the pointer and the shape, never the contents: *"assistive tech route for one Y2 child — notes in the SSW system, review with the coordinator in October."* Anonymous pedagogical observation is fine and is most of what I need — write the pattern, not the person.`);
+    P(``);
+    P(`If I start writing something that crosses this line, stop me and say which rule it hits. Do not quietly file it.`);
+    P(``);
+    P(`## Where truth lives — never duplicate these`);
+    P(`- **The shared Technology & Innovation notebook (NotebookLM + ELC Drive)** — the curriculum record, owned jointly with Goldie. Decided things live there. This brain points at it and never keeps a second copy.`);
+    P(`- **The lesson planning sheets** — the live weekly plan. Read from them, do not restate them.`);
+    P(`- **ELC Drive** — the source documents. Distil, link, never copy.`);
+    P(``);
+    P(`## The role split — hold both, choose neither`);
+    P(`There are two live answers to how Katie and Goldie divide the work:`);
+    P(`- **By year band** (the Technology Plan): Katie K1–Y2, Goldie Y3–Y6.`);
+    P(`- **By function** (the brain charter): Katie progression architecture, Goldie live lesson design.`);
+    P(``);
+    P(`Both are written down and neither has been chosen. **This is Katie's and Goldie's decision together.** Present both when it is relevant; never assume one. When it is settled, record it and correct whichever document is then wrong.`);
+    P(``);
+    H.BP.hotDiscipline(P);
+    P(``);
+    P(`## Lanes`);
+    lanes.forEach(l => P(`- **${l}** — \`${H.slug(l)}/\``));
+    if (S.route === 'ask') P(`\nWhen filing anything, always ask which lane it belongs in. Never guess.`);
+    else if (S.route === 'both') P(`\nPropose a lane and wait for my yes. When something genuinely serves both lanes, keep **one** record and reference it from the other — never two copies.`);
+    else P(`\nPropose which lane something belongs in and why, then wait for my yes. Learn from my corrections.`);
+    P(``);
+    P(`## Backup`);
+    P(`This folder sits inside Google Drive, so everything written here syncs to my ELC account automatically. There is no separate backup step and no git remote. Never push this anywhere.`);
+    P('```');
+    P(``);
+    P(`---`);
+    P(``);
+    P(`## 3. hot.md — start it like this`);
+    P(``);
+    P('```markdown');
+    P(`# hot`);
+    P(``);
+    P(`## ${"{today's date}"} | Brain built`);
+    P(`- ⭐ Second brain set up. Lanes: ${lanes.join(" · ")}.`);
+    P(`- 📌 One word: ${star}${H.STARLINE() ? " — " + H.STARLINE() : ""}`);
+    P(`- ⚠️ Nothing captured yet. First real ${daily ? "close" : "week close"} at the end of ${daily ? "today" : "this week"}.`);
+    P(``);
+    P(`## 🔭 Live right now`);
+    P(`_Filled in by the first close._`);
+    P(``);
+    P(`## 📎 Staged, not yet published`);
+    P(`_Thinking in the ${techLane} lane that has not reached the shared notebook._`);
+    P('```');
+    P(``);
+    P(`---`);
+    P(``);
+    P(`## 4. The seed sources — read these first`);
+    P(``);
+    P(`Before anything else, read each of these and write **one short distilled note per source** into \`sources/\`, named after the document. A note is: what this is · what it claims · what it is useful for · what it does not answer. **Three hundred words maximum. Never copy the document.**`);
+    P(``);
+    chosen.forEach(s => { P(`- **${s.t}** — ${s.url}`); P(`  ${s.why}`); });
+    if (mine.length) {
+      P(``);
+      P(`Then mine, which I have chosen myself:`);
+      P(``);
+      mine.forEach(m => P(`- **${m.t}**${m.why ? ` — ${m.why}` : ""}`));
+    }
+    P(``);
+    P(`When you have read them, tell me in **five lines**: what the corpus agrees on, and the one place two sources genuinely conflict. Do not smooth over the conflict — it is the most useful thing in there.`);
+    P(``);
+    P(`Adding a source later is a real step, not a drag-and-drop: I say what I want from it, you read it, you write the note, and the note says what it is for. **A source with no stated purpose gets cited at random, which is worse than not having it.**`);
+    P(``);
+    P(`---`);
+    P(``);
+    P(`## 5. The grill engine`);
+    P(``);
+    P(`Write this to \`.claude/skills/grill-engine.md\`. Every routine reads it first. It is the core of how the brain talks to me.`);
+    P(``);
+    H.BP.grillEngine(P, n, [
+      `**Claims the record contradicts** — I say a band is planned, the map still says \`unknown\`.`,
+      `**Thinking that has been staged for weeks and never published** to the shared notebook.`,
+      `**Decisions that happened but were never written down** — a conversation with Goldie, a call in a meeting.`,
+      `**Sequence questions I have avoided** — what does this year build on, and what does it feed?`,
+      `**A tool that entered a lesson without earning its place** — which of the four tests did it pass?`,
+      `**Where the week actually went** versus what I said mattered.`
+    ], {
+      good: "You planned three Y5 sessions off the Arduino sequence this week, and the progression map still has that band as unknown. Either the sequence is real and undocumented, or the planning is running ahead of the architecture. Which is it?",
+      weak: "Any updates on Y5?"
+    });
+    P(``);
+    P(`---`);
+    P(``);
+    P(`## 6. The routines`);
+    P(``);
+    P(`Write each as a file in \`.claude/commands/\`. Each one starts by reading the grill engine, then \`hot.md\`.`);
+    P(``);
+    P(`### \`/start\` — the morning brief`);
+    P(``);
+    P(`1. Read \`hot.md\`.`);
+    if (cap) P(`2. Sweep \`_inbox/\`. For each item: show me one line of it and where you think it belongs, wait for my yes, move it, confirm what moved. If you cannot tell, leave it and say so — never bury it.`);
+    P(`${cap ? 3 : 2}. Ask what is on today. One question. Wait.`);
+    P(`${cap ? 4 : 3}. Output the brief, sections omitted when genuinely empty:`);
+    P(``);
+    P('```');
+    P(`## 🔥 In flight`);
+    P(`[what is live, per lane]`);
+    P(``);
+    P(`## 📅 Today`);
+    P(`[what is on, flagged if it needs prep]`);
+    P(``);
+    P(`## ⚠️ Watch`);
+    P(`[at risk, gone quiet, waiting on me]`);
+    P(``);
+    P(`## 📎 Staged`);
+    P(`[thinking that has not reached the shared notebook, and how long it has sat]`);
+    P('```');
+    P(``);
+    P(`Short enough to read standing up. No pleasantries.`);
+    P(``);
+
+    if (daily) {
+      P(`### \`/close\` — end of the teaching day`);
+      P(``);
+      P(`Short by design. Ask what happened, write it into \`recaps/YYYY-MM-DD.md\`, update \`hot.md\`. **Two questions maximum** — the real interrogation is the week close. If nothing happened worth recording, say so and write nothing.`);
+      P(``);
+    }
+    {
+      P(`### \`/week-close\` — the grill, ${wkClose}`);
+      P(``);
+      P(`This is the one that does the work. It runs every week without exception${daily ? `, and it builds on the daily notes rather than repeating them` : ``}. Do not rush it.`);
+      P(``);
+      P(`1. Read the week's notes, \`hot.md\`, the staging folder, and last week's plan.`);
+      if (cap) P(`2. Sweep \`_inbox/\` first, the same way as \`/start\`.`);
+      P(`${cap ? 3 : 2}. Grill using the engine — three to eight questions, one at a time, writing each answer into \`recaps/YYYY-WNN.md\` as it lands and showing me the line you wrote.`);
+      P(`${cap ? 4 : 3}. Ask the honest one every week: **which lane got no attention at all, and was that a choice or a drift?**`);
+      P(`${cap ? 5 : 4}. Ask what in \`${H.slug(techLane)}/staging/\` has stopped changing and is ready to publish.`);
+      if (dec) P(`${cap ? 6 : 5}. If something this week was **hard to reverse, would puzzle a future reader, and had real alternatives**, offer to log it in \`decisions/\` — what was decided · why · what was rejected and why · what happens next. Fails any of the three tests, do not log it. The log stays thin on purpose.`);
+      P(`${(cap ? 6 : 5) + (dec ? 1 : 0)}. Update \`hot.md\`. Report back in five lines or fewer.`);
+      P(``);
+      P(`### \`/week-plan\` — ${wkPlan}`);
+      P(``);
+      P(`1. Read the latest week close and \`hot.md\`.`);
+      P(`2. Propose a **thesis for the week** — one sentence on what this week is actually for — then the three things that must move, one line of reasoning each drawn from the files. Wait for me to confirm or swap.`);
+      P(`3. Walk what is outstanding one item at a time. For each, propose exactly one of: **mine this week · push to a named week · goes to [person] · consciously dropped.** Wait for my yes on each. Never batch them.`);
+      P(`4. Write the plan into \`recaps/\`. Update \`hot.md\`.`);
+      P(``);
+    }
+
+    H.BP.saveCmd(P);
+    P(``);
+
+    P(`### \`/publish\` — ${S.publish === 'monthly' ? 'monthly' : S.publish === 'fortnightly' ? 'every two weeks' : 'when something is ready'}`);
+    P(``);
+    P(`The step that keeps the shared notebook true.`);
+    P(``);
+    P(`1. List everything in \`${H.slug(techLane)}/staging/\` with how long each item has sat there.`);
+    P(`2. For each, ask one question: **is this ready to be part of the shared record, or is it still thinking?** Wait for my answer on each. Never batch.`);
+    P(`3. For anything ready, draft the entry in the shape the shared notebook uses — the ledgers take a dated heading and a short block, newest on top — and show it to me. **I paste it in myself.** You never write to the shared notebook.`);
+    P(`4. Move published items out of staging into the lane proper, with a line saying when they were published.`);
+    P(`5. If nothing has been published in **two cycles**, say so plainly. That is the drift this whole rule exists to catch — a private brain quietly becoming the real record while the shared one goes stale.`);
+    if (S.publish === 'ondemand') P(``), P(`I have not set a cadence, so prompt me when a staged item has stopped changing for two weeks.`);
+    P(``);
+
+    if (H.has('addons', 'prep')) {
+      P(`### \`/prep\` — before a conversation`);
+      P(``);
+      P(`I will say \`/prep\` and who it is with. Then: who they are and what they own · what was last said and when · what is owed in each direction · what is live in the related lane · **the three things I need out of this** · anything I should be ready to be asked. One page, no filler. Afterwards, remind me to run \`/save\`.`);
+      P(``);
+    }
+    if (H.has('addons', 'observation')) {
+      P(`### \`/observed\` — capture what actually happened`);
+      P(``);
+      P(`For the moment after a session, while the detail is still there. Ask three questions and no more: **what did the children do that I did not plan for · what did the material make possible or refuse · what would I change next time.**`);
+      P(``);
+      P(`Write it into the relevant lane with the date, the year band and the materials involved. **No child is named.** Write the pattern, not the person — "three children could not get the clips to hold" is the useful form. If I name a child, strip it and tell me you did.`);
+      P(``);
+      P(`Tag anything that speaks to progression, because that is what feeds the architecture later.`);
+      P(``);
+    }
+
+    P(`---`);
+    P(``);
+    P(`## 7. Templates`);
+    P(``);
+    H.BP.templates(P, [
+      `\`source-note.md\` — what this is · what it claims · what it is useful for · what it does not answer`,
+      `\`sequence.md\` — year band · what it builds on · what it feeds · which capability · what evidence would change it`
+    ]);
+    P(``);
+    P(`---`);
+    P(``);
+    P(`## 8. The four-week check`);
+    P(``);
+    P(`Create \`decisions/four-week-check.md\` with today's date plus four weeks, and surface it in \`/start\` on that day. It holds three questions and nothing else:`);
+    P(``);
+    P(`1. Is the loop running **without anyone prompting me**?`);
+    P(`2. Has **at least one thing moved from this brain into the shared notebook** — or have Goldie and I recorded a decision to work differently?`);
+    P(`3. Would I keep it?`);
+    P(``);
+    P(`**Two noes and the honest answer is to stop and work out why.** Write the answers in the file whichever way it goes.`);
+    P(``);
+    P(`---`);
+    P(``);
+    H.BP.finallyBlock(P, [
+      `Show me the folder tree you created.`,
+      `Read the seed sources and give me the five-line summary described in section 4.`,
+      `Explain in **six lines or fewer**: what to type each morning, what to type at the end of the week, what \`/publish\` is for, and where to throw a stray thought.`,
+      `Tell me to run \`/start\`.`
+    ]);
+  },
+
+  summary(S, H) {
+    const lanes = H.on('lanes'), star = H.STAR();
+    const chosen = SEED.filter(s => S.sources.includes(s.id)).length;
+    const mine = (S.mine || []).filter(m => m.on).length;
+    const closeTxt = S.close === 'weekly' ? 'weekly grill only' : S.close === 'daily' ? 'daily grill' : 'quick daily + weekly grill';
+    const pubTxt = S.publish === 'monthly' ? 'monthly' : S.publish === 'fortnightly' ? 'fortnightly' : 'when something is ready';
+    return `<dl>
+      <dt>Folder</dt><dd><code>${H.V()}</code> in your ELC Google Drive</dd>
+      <dt>One word</dt><dd>${star}${H.STARLINE() ? ' — ' + H.STARLINE() : ''}</dd>
+      <dt>Lanes</dt><dd>${lanes.join(' · ')}</dd>
+      <dt>Rhythm</dt><dd>/start each morning · ${closeTxt} · /week-plan ${S.weekday === 'Friday' ? 'Friday' : 'Sunday'}</dd>
+      <dt>Sources</dt><dd>${chosen} seeded${mine ? ` · ${mine} of your own` : ''}</dd>
+      <dt>Publish</dt><dd>staged thinking → shared notebook, ${pubTxt}</dd>
+      <dt>Boundaries</dt><dd>no safeguarding · no HR · no named children · pointer rule</dd>
+      <dt>Check</dt><dd>four weeks from build, three questions</dd>
+    </dl>`;
+  },
+
+  afterBuild(S, H) {
+    document.getElementById('cdcmd').innerHTML =
+      `cd <span class="c">&lt;drag your brain folder here&gt;</span>\nclaude`;
+  }
+};
+</script>
+<script src="../core/core.js"></script>
+</body>
+</html>

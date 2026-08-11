@@ -250,8 +250,8 @@ pre.cmd .c{color:var(--olive-lift)}
 
           <div class="teach dark">
             <span class="eyebrow">Why it fits your job specifically</span>
-            <p>Your role is <strong>“nothing stalls.”</strong> You hold ~140 prospects, five events, ambassadors, Alliance follow-ups, union scoping — across people more senior than you who are, in your boss’s own words, stretched too thin. You’ve been asked to <strong>chase them until things are done, delegated, or consciously dropped.</strong></p>
-            <p>That is a memory problem before it’s an admin problem. Notion shows the team where things stand. Basecamp holds the tasks. Neither one remembers <em>that Chris said he’d introduce someone eleven days ago and nobody has followed up.</em> This brain does — because it asks you every morning, and writes what you say down.</p>
+            <p>Your role is <strong>“nothing stalls.”</strong> You hold a large prospect list, a run of events, ambassadors, Alliance follow-ups and union scoping — across people more senior than you who are, in your manager’s own words, stretched too thin. You’ve been asked to <strong>chase them until things are done, delegated, or consciously dropped.</strong></p>
+            <p>That is a memory problem before it’s an admin problem. Notion shows the team where things stand. Basecamp holds the tasks. Neither one remembers <em>that someone promised an introduction eleven days ago and nobody has followed it up.</em> This brain does — because it asks you every morning, and writes down what you say.</p>
           </div>
 
           <p>Answer about twenty questions here. At the end you get a file called <code>BLUEPRINT.md</code>. You paste it into Claude Code and it builds the whole thing while you watch — folders, rules, routines, templates. Then you run your first morning routine.</p>
@@ -391,7 +391,7 @@ claude</pre>
             <div class="q"><span class="num">Q6</span>The people the brain should know.</div>
             <p class="help">Names it needs so it can chase properly — who owns what, who you follow up, who you route to. Add or remove freely; you can grow this list forever later.</p>
             <div class="chips" id="peepChips"></div>
-            <div class="addrow"><input type="text" id="peepAdd" placeholder="Name — role, e.g. Chris — co-lead, HNW relationship owner"><button class="btn ghost" id="peepBtn">Add</button></div>
+            <div class="addrow"><input type="text" id="peepAdd" placeholder="Name — role, e.g. Sam — co-lead, HNW relationship owner"><button class="btn ghost" id="peepBtn">Add</button></div>
           </div>
 
           <p class="note">Don’t overthink the list. The directory grows itself — every time you mention a new name in a session, the assistant asks whether to add them.</p>
@@ -479,8 +479,8 @@ claude</pre>
           <div class="teach dark">
             <span class="eyebrow">The owed ledger — this one is yours, not mine</span>
             <p>A single file, <code>owed.md</code>. Every commitment anyone made: <strong>who owes it · to whom · what · by when · when you last nudged.</strong></p>
-            <p>Your morning brief opens with what’s overdue and what’s gone quiet. Not “here are your tasks” — <em>“Chris owes the intro to the Bangkok prospect. Agreed the 3rd. You nudged the 9th. Eight days silent.”</em></p>
-            <p>Your brief says to chase your boss and Chris until things are done, delegated or dropped. Chasing from memory is how things go quiet. This is the file that makes you the person who never lets it.</p>
+            <p>Your morning brief opens with what’s overdue and what’s gone quiet. Not “here are your tasks” — <em>“Your co-lead owes the intro to the Bangkok prospect. Agreed the 3rd. You nudged the 9th. Eight days silent.”</em></p>
+            <p>Your brief says to chase your manager and your co-lead until things are done, delegated or dropped. Chasing from memory is how things go quiet. This is the file that makes you the person who never lets it.</p>
           </div>
 
           <div class="decide">
@@ -516,7 +516,7 @@ claude</pre>
           <div class="teach">
             <span class="eyebrow">The boundary that matters most</span>
             <p><strong>Notion is your team’s truth. Basecamp holds the tasks. The brain never keeps its own copy of either.</strong></p>
-            <p>The brain is where you think, chase and prepare. When something is settled, it goes into Notion where Chris and your boss can see it — and the brain’s job is to <em>remind you to put it there</em>, not to store a private version that quietly drifts out of date.</p>
+            <p>The brain is where you think, chase and prepare. When something is settled, it goes into Notion where your manager and co-lead can see it — and the brain’s job is to <em>remind you to put it there</em>, not to store a private version that quietly drifts out of date.</p>
             <p>Rule of thumb: if your team would look for it, it belongs in Notion. If it’s the thinking or the chasing behind it, it belongs here.</p>
           </div>
 
@@ -540,7 +540,7 @@ claude</pre>
 
           <div class="decide">
             <div class="q"><span class="num">Q14</span>Should the brain hold a house style for what you write?</div>
-            <p class="help">Your brief says Chris and your boss are spending too much time reformatting your team’s documents and want that to stop. A style file means everything the assistant drafts comes out in one consistent voice and shape.</p>
+            <p class="help">Your brief says your manager and co-lead are spending too much time reformatting your team’s documents and want that to stop. A style file means everything the assistant drafts comes out in one consistent voice and shape.</p>
             <div class="cards" data-radio="style">
               <label class="opt"><input type="radio" name="style" value="yes"><span class="box round"></span><span><span class="lbl">Yes, build a style file <span class="rec">Suggested</span></span><span class="sub">Rules for emails, briefing notes and updates. Grows as you learn what your seniors actually want.</span></span></label>
               <label class="opt"><input type="radio" name="style" value="no"><span class="box round"></span><span><span class="lbl">Not yet <span class="later">Add later</span></span><span class="sub">Skip it. One sentence to Claude adds it whenever you want.</span></span></label>
@@ -648,17 +648,18 @@ const DEFAULT_AREAS=[
   {t:"Union scoping & activation",on:true},
   {t:"Grassroots to Global",on:true},
   {t:"Partner admin & due diligence",on:true},
-  {t:"LRF handover (to Keiko, from 1 Sept)",on:true},
+  {t:"LRF handover (from 1 Sept)",on:true},
   {t:"My role & ways of working",on:true}
 ];
+// Roles only, no names — this page is public source. She types the real names in.
 const DEFAULT_PEOPLE=[
-  {t:"Chris — co-lead, HNW relationship owner",on:true},
-  {t:"My line manager — co-lead, HNW relationship owner, my main follow-up target",on:true},
-  {t:"Thu — substantive lead: union scoping, Grassroots to Global, partner admin",on:true},
-  {t:"My (My Noy) — contracts, compliance, procurement, finance processes",on:true},
-  {t:"Vorleak — transactional admin: bookings, purchasing, payments, systems",on:true},
-  {t:"Steve Blackwood — leads commercial partnership work",on:true},
-  {t:"Keiko — Lao Rugby Federation, takes LRF handover from 1 Sept",on:true},
+  {t:"[name] — my line manager, HNW relationship owner, my main follow-up target",on:true},
+  {t:"[name] — co-lead, HNW relationship owner",on:true},
+  {t:"[name] — substantive lead: union scoping, Grassroots to Global, partner admin",on:true},
+  {t:"[name] — contracts, compliance, procurement, finance processes",on:true},
+  {t:"[name] — transactional admin: bookings, purchasing, payments, systems",on:true},
+  {t:"[name] — leads commercial partnership work",on:true},
+  {t:"[name] — takes the LRF handover from 1 Sept",on:true},
   {t:"Rugby Giving Leads — two roles, not yet hired",on:true}
 ];
 const BLANK={
